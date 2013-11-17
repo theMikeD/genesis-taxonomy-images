@@ -54,6 +54,26 @@ function gtaxi_add_taxonomy_image_hooks() {
 
 
 /**
+ * Supported taxonomies.
+ * 
+ * Gets supported taxonomies. Change once, change everywhere.
+ * Props wpsmith
+ * 
+ * @since 0.8.1
+ *
+ * @see none
+ * @link none
+ * @global none.
+ *
+ * @return array Array of supported taxonomies.
+ */
+function gtaxi_get_taxonomies() {
+
+	return apply_filters( 'gtaxi_get_taxonomies', get_taxonomies( array( 'show_ui' => true ) ) );
+}
+
+
+/**
  * Enqueue WP Media javascript.
  *
  * Hooked to 'admin_enqueue_scripts' action
