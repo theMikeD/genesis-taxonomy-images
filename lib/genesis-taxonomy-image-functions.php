@@ -17,15 +17,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-add_action( 'init', 'gtaxi_add_taxonomy_image_hooks' );
+add_action( 'init', 'gtaxi_add_taxonomy_image_hooks', 999 );
 /**
  * Add taxonomy image functionality to taxonomy terms admin screens.
  *
- * Hooked to 'init' action
+ * Hooked to 'init' action, now with very low priority to ensure
+ * that taxonomies have been registered and are available to us.
  *
  * Loops through all registered taxonomies which have a public UI
  * and adds necessary filters to display and edit Taxonomy Images
  * in the taxonomies' terms admin screens.
+ *
+ * Added gtaxi_taxonomies filter, props wpsmith
  *
  * @since 0.8.0
  *
@@ -39,7 +42,9 @@ function gtaxi_add_taxonomy_image_hooks() {
 
 	add_action( 'admin_enqueue_scripts', 'gtaxi_admin_scripts' );
 	
-	foreach ( get_taxonomies( array( 'show_ui' => true ) ) as $tax_name ) {
+	$taxonomies = apply_filters( 'gtaxi_taxonomies', get_taxonomies( array( 'show_ui' => true ) ) );
+	
+	foreach ( $taxonomies as $tax_name ) {
 		add_filter( 'manage_edit-'.$tax_name.'_columns', 'gtaxi_taxonomy_image_column' );
 		add_filter( 'manage_'.$tax_name.'_custom_column', 'gtaxi_taxonomy_image_column_content', 10, 3 );
 		// Priority of 9 to insert this before Genesis term meta fields
