@@ -8,7 +8,7 @@
  * @since 0.8.0
  *
  * @package genesis-taxonomy-images
- * @version 0.8.0
+ * @version 0.8.1
  * @author Ade Walker
  */
  

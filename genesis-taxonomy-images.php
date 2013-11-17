@@ -2,7 +2,7 @@
 /*
 Plugin Name: Genesis Taxonomy Images
 Plugin URI: http://www.studiograsshopper.ch/projects/genesis-taxonomy-images
-Version: 0.8.0
+Version: 0.8.1
 Author: Ade Walker
 Contributors: studiograsshopper
 Author URI: http://www.studiograsshopper.ch/
@@ -29,6 +29,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /*
 VERSIONS
 		
+0.8.1	- Enhance: Added gtaxi_get_taxonomies() function
+		- Bug fix: Added low priority of 999 to init hook to ensure that taxonomies are already registered
+		- Bug fix: Fixed issue of wp_enqueue_media script not loading on custom taxonomy term edit screens
+
 0.8.0	- Public release
 
 		
@@ -44,7 +48,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GTAXI_URL',			plugins_url( 'genesis-taxonomy-images' ) );
 define( 'GTAXI_DIR', 			plugin_dir_path( __FILE__ ) );
 define( 'GTAXI_LIB_DIR', 		GTAXI_DIR . '/lib' );
-define( 'GTAXI_VER', 			'0.8.0' );
+define( 'GTAXI_VER', 			'0.8.1' );
 define( 'GTAXI_WP_VER_REQ', 	'3.6' );
 define( 'GTAXI_GEN_MIN_VER',	'2.0.0' );
 

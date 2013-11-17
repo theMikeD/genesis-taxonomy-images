@@ -1,6 +1,6 @@
 === Genesis Taxonomy Images ===
 
-Version: 0.8.0
+Version: 0.8.1
 Author: Ade Walker
 Author page: http://www.studiograsshopper.ch
 Plugin page: http://www.studiograsshopper.ch/genesis-taxonomy-images/
@@ -99,6 +99,12 @@ In order to use this plugin your current theme must be a Genesis Child Theme.
 
 
 == Changelog ==
+
+= 0.8.1 =
+* Released 17 November 2013
+* Enhance: Added gtaxi_get_taxonomies() function
+* Bug fix: Added low priority of 999 to init hook to ensure that taxonomies are already registered
+* Bug fix: Fixed issue of wp_enqueue_media script not loading on custom taxonomy term edit screens
 
 = 0.8.0 =
 * Initial Release 28 October 2013
