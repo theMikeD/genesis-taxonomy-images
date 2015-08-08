@@ -33,7 +33,7 @@ add_action( 'init', 'gtaxi_activation_dispatcher' );
 /**
  * gtaxi_activation_dispatcher() performs sanity checks for plugin requirements. Loaded via the init hook.
  *
- * @since 1.0.0
+ * @since 0.9.0
  *
  * @access public
  * @return void
@@ -43,7 +43,7 @@ function gtaxi_activation_dispatcher() {
 	if (  version_compare( PARENT_THEME_VERSION, GTAXI_GEN_MIN_VER, '<' ) ) {
 
 		// If Genesis is not active or is 1.x, deactivate the plugin...
-		add_action( 'admin_init', 'gtaxi_deactivate' );
+		//add_action( 'admin_init', 'gtaxi_deactivate' );
 
 		// ...and set an admin notice saying why.
 		add_action( 'admin_notices', 'gtaxi_admin_notice_deactivated' );
@@ -52,7 +52,7 @@ function gtaxi_activation_dispatcher() {
 		/**
 		 * gtaxi_deactivate() deactivates the plugin
 		 *
-		 * @since 1.0.0
+		 * @since 0.9.0
 		 *
 		 * @access public
 		 * @return void
@@ -65,13 +65,13 @@ function gtaxi_activation_dispatcher() {
 		/**
 		 * gtaxi_admin_notice_deactivated() sets an admin notice describing why it was deactivated
 		 *
-		 * @since 1.0.0
+		 * @since 0.9.0
 		 *
 		 * @access public
 		 * @return void
 		 */
 		function gtaxi_admin_notice_deactivated() {
-			$e = '<b>Genesis Taxonomy Images</b> was <b>deactivated</b> because the active theme is not using the Genesis framework.';
+			$e = '<b>Genesis Taxonomy Images</b> is <b>disabled</b> because the active theme is not using the Genesis framework. If this is a permanent change, you should diable this plugin.';
 			?>
 			<div class="error notice is-dismissible">
 				<p><?php echo $e; ?></p>
