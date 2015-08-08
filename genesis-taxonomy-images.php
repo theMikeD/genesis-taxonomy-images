@@ -21,7 +21,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Define required constants
-define( 'GTAXI_VER', 			'1.0.0' );
 define( 'GTAXI_GEN_MIN_VER',	'2.0.0' );
 
 
