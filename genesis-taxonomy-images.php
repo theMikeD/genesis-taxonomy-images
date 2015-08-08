@@ -2,15 +2,16 @@
 /*
 Plugin Name: Genesis Taxonomy Images
 Plugin URI: http://www.studiograsshopper.ch/projects/genesis-taxonomy-images
-Version: 0.8.1
-Author: Ade Walker
-Contributors: studiograsshopper
-Author URI: http://www.studiograsshopper.ch/
+Version: 1.0.0
+Author: theMikeD
+Contributors: themiked
+Author URI: http://codenamemiked.com
 Description: Create and manage Taxonomy Images for the Genesis theme framework
 
 License:
 
 Copyright 2013 Ade Walker (info@studiograsshopper.ch)
+Copyright 2015 Mike Dickson (info@codenamemiked.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as 
@@ -26,69 +27,86 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/*
-VERSIONS
-		
-0.8.1	- Enhance: Added gtaxi_get_taxonomies() function
-		- Bug fix: Added low priority of 999 to init hook to ensure that taxonomies are already registered
-		- Bug fix: Fixed issue of wp_enqueue_media script not loading on custom taxonomy term edit screens
-
-0.8.0	- Public release
-
-		
-*/
-
 // Prevent direct access to the plugin
 if ( ! defined( 'ABSPATH' ) ) {
 	exit( _( 'Sorry, you are not allowed to access this page directly.' ) );
 }
 
-
-// Define some constants
-define( 'GTAXI_URL',			plugins_url( 'genesis-taxonomy-images' ) );
-define( 'GTAXI_DIR', 			plugin_dir_path( __FILE__ ) );
-define( 'GTAXI_LIB_DIR', 		GTAXI_DIR . '/lib' );
-define( 'GTAXI_VER', 			'0.8.1' );
-define( 'GTAXI_WP_VER_REQ', 	'3.6' );
+// Define required constants
+define( 'GTAXI_VER', 			'1.0.0' );
 define( 'GTAXI_GEN_MIN_VER',	'2.0.0' );
 
 
-// Load files
-require_once( GTAXI_LIB_DIR . '/genesis-taxonomy-image-functions.php' );
+// Initialize when already active
+add_action( 'genesis_init', 'gtaxi_init', 99 );
 
 
-register_activation_hook( __FILE__, 'gtaxi_activation' );
+
+add_action( 'init', 'gtaxi_activation_dispatcher' );
 /**
- * Check the environment when plugin is activated
+ * gtaxi_activation_dispatcher() performs sanity checks for plugin requirements. Loaded via the init hook.
  *
- * Requirements:
- * - Genesis (min version) must be current theme 'Template'
+ * @since 1.0.0
  *
- * Note: register_activation_hook() isn't run after auto or manual upgrade, only on activation
- *
- * @since 0.8.0
- *
- * @return void.
+ * @access public
+ * @return void
  */
-function gtaxi_activation() {
+function gtaxi_activation_dispatcher() {
+	// Note: PARENT_THEME_VERSION is set by Genesis
+	if (  version_compare( PARENT_THEME_VERSION, GTAXI_GEN_MIN_VER, '<' ) ) {
 
-	$message = '';
-	
-	// Check that Genesis min version is installed
-	if ( version_compare( PARENT_THEME_VERSION, GTAXI_GEN_MIN_VER, '<' ) ) {
-	
-		$message .= sprintf( __( '<br /><br />Install and activate <a href="%s">Genesis Framework %s</a> or greater', 'gtaxi' ), 'http://my.studiopress.com/downloads/genesis', GTAXI_GEN_MIN_VER );
-	
-	}
+		// If Genesis is not active or is 1.x, deactivate the plugin...
+		add_action( 'admin_init', 'gtaxi_deactivate' );
 
-	// Display messages if necessary
-	if ( ! empty( $message ) ) {
+		// ...and set an admin notice saying why.
+		add_action( 'admin_notices', 'gtaxi_admin_notice_deactivated' );
 
-		deactivate_plugins( plugin_basename( __FILE__ ) ); // Deactivate ourself
 
-		$message = __( 'Sorry! In order to use the Genesis Taxonomy Images plugin you need to do the following:', 'gtaxi' ) . $message;
+		/**
+		 * gtaxi_deactivate() deactivates the plugin
+		 *
+		 * @since 1.0.0
+		 *
+		 * @access public
+		 * @return void
+		 */
+		function gtaxi_deactivate() {
+			deactivate_plugins( plugin_basename( __FILE__ ) );
+		}
 
-		wp_die( $message, 'Genesis Taxonomy Images', array( 'back_link' => true ) );
 
+		/**
+		 * gtaxi_admin_notice_deactivated() sets an admin notice describing why it was deactivated
+		 *
+		 * @since 1.0.0
+		 *
+		 * @access public
+		 * @return void
+		 */
+		function gtaxi_admin_notice_deactivated() {
+			$e = '<b>Genesis Taxonomy Images</b> was <b>deactivated</b> because the active theme is not using the Genesis framework.';
+			?>
+			<div class="error notice is-dismissible">
+				<p><?php echo $e; ?></p>
+				<button type="button" class="notice-dismiss"><span class="screen-reader-text">Dismiss this notice.</span></button>
+			</div>
+			<?php
+			if ( isset( $_GET['activate'] ) )
+				unset( $_GET['activate'] );
+		}
 	}
 }
+
+
+/**
+ * gtaxi_init() is called via the genesis_init hook. Sets up the plugin functionality.
+ *
+ * @since 1.0.0
+ *
+ * @access public
+ * @return void
+ */
+function gtaxi_init() {
+	require_once( plugin_dir_path( __FILE__ ) . 'lib/genesis-taxonomy-image-functions.php' );
+}
+
