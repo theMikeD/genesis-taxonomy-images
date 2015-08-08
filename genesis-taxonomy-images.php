@@ -1,30 +1,18 @@
 <?php
 /*
 Plugin Name: Genesis Taxonomy Images
-Plugin URI: http://www.studiograsshopper.ch/projects/genesis-taxonomy-images
-Version: 1.0.0
-Author: theMikeD
-Contributors: themiked
-Author URI: http://codenamemiked.com
+Plugin URI:  http://www.studiograsshopper.ch/projects/genesis-taxonomy-images
 Description: Create and manage Taxonomy Images for the Genesis theme framework
-
-License:
+Version:     0.9.0
+Author:      studiograsshopper, themiked
+Author URI:  http://www.studiograsshopper.ch
+Text Domain: gtaxi
+License:     GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Copyright 2013 Ade Walker (info@studiograsshopper.ch)
 Copyright 2015 Mike Dickson (info@codenamemiked.com)
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 // Prevent direct access to the plugin
