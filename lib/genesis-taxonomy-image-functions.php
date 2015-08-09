@@ -418,10 +418,7 @@ function gtaxi_get_taxonomy_image( $args = array() ) {
 
 	// Source path, relative to the root
 	$src = str_replace( home_url(), '', $url );
-
-	md_log( "Showing the post");
-	md_log( get_post($term_image_id) );
-
+	
 	// Determine output
 	switch (  mb_strtolower( $args['format'] ) ) {
 // @TODO: find a way to return the entire image attachment object/array if requested
