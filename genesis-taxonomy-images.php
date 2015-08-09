@@ -24,43 +24,59 @@ if ( ! defined( 'ABSPATH' ) ) {
 define( 'GTAXI_GEN_MIN_VER',	'2.0.0' );
 
 
-// Initialize when already active
-add_action( 'genesis_init', 'gtaxi_init', 99 );
 
-
-
-add_action( 'init', 'gtaxi_activation_dispatcher' );
+register_activation_hook( __FILE__, 'gtaxi_activation' );
 /**
  * gtaxi_activation_dispatcher() performs sanity checks for plugin requirements. Loaded via the init hook.
+ *
+ * You may be thinking to yourself, "Self, why doesn't this guy use admin_notice to show the deactivation message?"
+ * The reason is that admin_notices fires after admin_init and register_activation_hook,
+ * so when we hook to it nothing will happen. So we are forced to use wp_die instead.
+ *
+ * @since 0.9.0
+ * @author Nathan Rice, Remkus de Vries, Rian Rietveld, modified by @themiked
+ * @access public
+ * @return void
+ */
+function gtaxi_activation() {
+	if ( basename( get_template_directory() ) != 'genesis' ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		if ( isset( $_GET['activate'] ) ) { unset( $_GET['activate'] ); }
+		$message = __( '<h3>Genesis Taxonomy Images activation cancelled</h3><p>This plugin requires the Genesis theme framework which is not currently active.</p>', 'gtaxi' ) . $message;
+		wp_die( $message, 'Genesis Taxonomy Images', array( 'back_link' => true ) );
+	}
+
+	// Find Genesis Theme Data
+	$theme   = wp_get_theme( 'genesis' );
+	$version = $theme->get( 'Version' );
+
+	// Set a minimum version of the Genesis Framework to be activated on
+	//if ( version_compare( PARENT_THEME_VERSION, GTAXI_GEN_MIN_VER, '<' ) ) {
+	if ( version_compare( $version, GTAXI_GEN_MIN_VER, '<' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		if ( isset( $_GET['activate'] ) ) { unset( $_GET['activate'] ); }
+		$message = __( '<p><b>Genesis Taxonomy Images</b> activation <b>cancelled</b>.</p><p>This plugin requires the Genesis theme framework version ' . GTAXI_GEN_MIN_VER . ' or greater, and yours is ' . $version . '. </p>', 'gtaxi' ) . $message;
+		wp_die( $message, 'Genesis Taxonomy Images', array( 'back_link' => true ) );
+	}
+}
+
+
+
+add_action( 'init', 'gtaxi_genesis_checker' );
+/**
+ * gtaxi_genesis_checker() performs sanity checks for plugin requirements. Loaded via the init hook.
  *
  * @since 0.9.0
  *
  * @access public
  * @return void
  */
-function gtaxi_activation_dispatcher() {
+function gtaxi_genesis_checker() {
 	// Note: PARENT_THEME_VERSION is set by Genesis
 	if (  version_compare( PARENT_THEME_VERSION, GTAXI_GEN_MIN_VER, '<' ) ) {
 
-		// If Genesis is not active or is 1.x, deactivate the plugin...
-		//add_action( 'admin_init', 'gtaxi_deactivate' );
-
-		// ...and set an admin notice saying why.
+		// If Genesis is not active or is 1.x, set an admin warning.
 		add_action( 'admin_notices', 'gtaxi_admin_notice_deactivated' );
-
-
-		/**
-		 * gtaxi_deactivate() deactivates the plugin
-		 *
-		 * @since 0.9.0
-		 *
-		 * @access public
-		 * @return void
-		 */
-		function gtaxi_deactivate() {
-			deactivate_plugins( plugin_basename( __FILE__ ) );
-		}
-
 
 		/**
 		 * gtaxi_admin_notice_deactivated() sets an admin notice describing why it was deactivated
@@ -71,7 +87,7 @@ function gtaxi_activation_dispatcher() {
 		 * @return void
 		 */
 		function gtaxi_admin_notice_deactivated() {
-			$e = '<b>Genesis Taxonomy Images</b> is <b>disabled</b> because the active theme is not using the Genesis framework. If this is a permanent change, you should diable this plugin.';
+			$e = '<b>Genesis Taxonomy Images</b> is <b>active but disabled</b> because the current theme is not using the Genesis framework. If you don\'t intend to use Genesis, you should disable this plugin.';
 			?>
 			<div class="error notice is-dismissible">
 				<p><?php echo $e; ?></p>
@@ -85,8 +101,10 @@ function gtaxi_activation_dispatcher() {
 }
 
 
+
+add_action( 'genesis_init', 'gtaxi_init', 99 );
 /**
- * gtaxi_init() is called via the genesis_init hook. Sets up the plugin functionality.
+ * gtaxi_init() is called via the genesis_init hook when the plugin is active. Sets up the plugin functionality.
  *
  * @since 1.0.0
  *
@@ -96,4 +114,3 @@ function gtaxi_activation_dispatcher() {
 function gtaxi_init() {
 	require_once( plugin_dir_path( __FILE__ ) . 'lib/genesis-taxonomy-image-functions.php' );
 }
-

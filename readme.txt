@@ -115,7 +115,7 @@ This plugin is designed for use with the Genesis theme framework version 2 or gr
 * FIXED: On term edit screen, the image is now shown at its true aspect (no longer forced square)
 * NEW: On term edit screen, the image is bigger now; it uses the 'medium' size for display
 * NEW: Added `term` to options accepted by `gtaxi_get_taxonomy_image()`. If set to a term object, it will get the image for that term
-* NEW: Plugin auto-deactivates if theme is switched from Genesis to non-Genesis
+* NEW: Plugin warns the user if the theme is switched from a Genesis-based theme to to a non-Genesis theme
 * ENHANCEMENT: Modified UI to be consistent with WP syntax used elsewhere
 * ENHANCEMENT: Re-written plugin initialization code to use wp-standard admin notices on fail
 * ENHANCEMENT: Speedup of admin screens by using 'medium' images (not full-sized ones)
