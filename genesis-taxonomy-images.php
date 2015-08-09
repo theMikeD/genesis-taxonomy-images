@@ -27,7 +27,7 @@ define( 'GTAXI_GEN_MIN_VER',	'2.0.0' );
 
 register_activation_hook( __FILE__, 'gtaxi_activation' );
 /**
- * gtaxi_activation_dispatcher() performs sanity checks for plugin requirements. Loaded via the init hook.
+ * gtaxi_activation() performs sanity checks for plugin requirements. Loaded via register_activation_hook.
  *
  * You may be thinking to yourself, "Self, why doesn't this guy use admin_notice to show the deactivation message?"
  * The reason is that admin_notices fires after admin_init and register_activation_hook,
@@ -50,7 +50,6 @@ function gtaxi_activation() {
 	$theme   = wp_get_theme( 'genesis' );
 	$version = $theme->get( 'Version' );
 
-	// Set a minimum version of the Genesis Framework to be activated on
 	//if ( version_compare( PARENT_THEME_VERSION, GTAXI_GEN_MIN_VER, '<' ) ) {
 	if ( version_compare( $version, GTAXI_GEN_MIN_VER, '<' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
