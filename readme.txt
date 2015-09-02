@@ -105,12 +105,14 @@ This plugin is designed for use with the Genesis theme framework version 2 or gr
 
 
 == Screenshots ==
+
 1. Taxonomy admin screen, in this case for tags. A new column (highlighted) is added to show the assigned term image.
 2. Term edit screen, in this case for tags. A new section (highlighted) is added to allow an image to be managed for the term.
 
 
 
 == Changelog ==
+
 = 1.0.0 =
 * FIXED: On term edit screen, the image is now shown at its true aspect (no longer forced square)
 * NEW: On term edit screen, the image is bigger now; it uses the 'medium' size for display
