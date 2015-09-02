@@ -111,7 +111,7 @@ This plugin is designed for use with the Genesis theme framework version 2 or gr
 
 
 == Changelog ==
-1.0.0
+= 1.0.0 =
 * FIXED: On term edit screen, the image is now shown at its true aspect (no longer forced square)
 * NEW: On term edit screen, the image is bigger now; it uses the 'medium' size for display
 * NEW: Added `term` to options accepted by `gtaxi_get_taxonomy_image()`. If set to a term object, it will get the image for that term
