@@ -1,16 +1,16 @@
 === Genesis Taxonomy Images ===
-Version:           0.9.0
+Version:           1.0.0
 Plugin page:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
 Donate link:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
 Contributors:      studiograsshopper, themiked
 Tags:              genesis, genesiswp, studiopress, taxonomy images, image
 Requires at least: 3.6
-Tested up to:      4.2.4
+Tested up to:      4.3
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag:        0.8.1
+Stable tag:        1.0.0
 
-Create and manage taxonomy images for the Genesis theme framework.
+Create and manage taxonomy images for themes using the Genesis framework.
 
 
 == Description ==

@@ -3,7 +3,7 @@
 Plugin Name: Genesis Taxonomy Images
 Plugin URI:  http://www.studiograsshopper.ch/projects/genesis-taxonomy-images
 Description: Create and manage Taxonomy Images for the Genesis theme framework
-Version:     0.9.0
+Version:     1.0.0
 Author:      studiograsshopper, themiked
 Author URI:  http://www.studiograsshopper.ch
 Text Domain: gtaxi
@@ -33,7 +33,7 @@ register_activation_hook( __FILE__, 'gtaxi_activation' );
  * The reason is that admin_notices fires after admin_init and register_activation_hook,
  * so when we hook to it nothing will happen. So we are forced to use wp_die instead.
  *
- * @since 0.9.0
+ * @since 1.0.0
  * @author Nathan Rice, Remkus de Vries, Rian Rietveld, modified by @themiked
  * @access public
  * @return void
@@ -65,7 +65,7 @@ add_action( 'init', 'gtaxi_genesis_checker' );
 /**
  * gtaxi_genesis_checker() performs sanity checks for plugin requirements. Loaded via the init hook.
  *
- * @since 0.9.0
+ * @since 1.0.0
  *
  * @access public
  * @return void
