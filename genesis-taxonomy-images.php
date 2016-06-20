@@ -3,7 +3,7 @@
 Plugin Name: Genesis Taxonomy Images
 Plugin URI:  http://www.studiograsshopper.ch/projects/genesis-taxonomy-images
 Description: Create and manage Taxonomy Images for the Genesis theme framework
-Version:     1.0.0
+Version:     1.1.0
 Author:      studiograsshopper, themiked
 Author URI:  http://www.studiograsshopper.ch
 Text Domain: gtaxi

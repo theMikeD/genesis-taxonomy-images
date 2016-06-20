@@ -275,34 +275,24 @@ function gtaxi_add_taxonomy_image_column_content( $columns, $column, $id ) {
 
 	if ( $column == 'thumb' ) {
 		$image = '';
-		
+		$thumbnail_id  = '';
+		$alt = '';
 		// Get the taxonomy name...
 		$taxonomy = isset( $_GET['taxonomy' ] ) ? $_GET['taxonomy' ] : false;
 		if ( ! $taxonomy )
 			return $columns;
 
-		// ...then get the term object.
 		$term = get_term_by( 'id', $id, $taxonomy );
-		if ( ! $term )
-			return $columns;
-
-		// Now get the stored taxonomy image id if present.
-		$thumbnail_id = isset( $term->meta['term_thumbnail_id'] ) ? absint( $term->meta['term_thumbnail_id'] ) : false;
+		$thumbnail_id = rgc_get_term_meta( $term, 'term_thumbnail_id' );
 
 		// If we have an ID, go get the image URL.
 		if ( $thumbnail_id ) {
 			$image = wp_get_attachment_image_src( $thumbnail_id, 'thumbnail' )[0];
-		}
-
-		// If we don't have a valid image url, then either a) an image was not set or b) the stored ID is invalid.
-		// Either way, show the default image.
-		// @TODO: Should we also reset the stored value here if b) is the case?
-		if ( ! $image ) {
+		} else {
+			// If we don't have a valid $thumbnail_id, then show the default image.
+			// @TODO: Should we also reset the stored value here if b) is the case?
 			$image = gtaxi_get_placeholder_img_src();
 		}
-
-		$alt = esc_attr( $term->name ) . ' Term image';
-		
 		$columns .= '<img src="' . $image . '" alt="' . $alt . '" class="wp-post-image" height="48" width="48" />';
 	}
 
@@ -400,7 +390,8 @@ function gtaxi_get_taxonomy_image( $args = array() ) {
 	// And if we *still* don't have a term object, bail.
 	if ( ! $term ) { return false; }
 
-	$term_image_id = isset( $term->meta['term_thumbnail_id'] ) ? $term->meta['term_thumbnail_id'] : false;
+	// So we have a term object. Now get the image id
+	$term_image_id = rgc_get_term_meta( $term, 'term_thumbnail_id' );
 	
 	if ( $term_image_id ) {
 		// @TODO: error checking here
@@ -453,4 +444,28 @@ function gtaxi_get_taxonomy_image( $args = array() ) {
 	 * @param string $src The url relative to the root
 	 */
 	return apply_filters( 'gtaxi_get_taxonomy_image', $output, $args, $term_image_id, $html, $url, $src );
+}
+
+
+/**
+ * Get the term meta (generally headline or intro text). Backwards compatible,
+ * but uses new term meta (as of Genesis 2.2.7)
+ * @param $term object the term
+ * @param $key string meta key to retrieve
+ * @param string $value string output of the term meta
+ *
+ * @return mixed|string
+ * @src: @robincornett
+ */
+function rgc_get_term_meta( $term, $key, $value = '' ) {
+	if ( ! $term ) {
+		return $value;
+	}
+	if ( function_exists( 'get_term_meta' ) ) {
+		$value = get_term_meta( $term->term_id, $key, true );
+	}
+	if ( ! $value && isset( $term->meta[ $key ] ) ) {
+		$value = $term->meta[ $key ];
+	}
+	return $value;
 }

@@ -1,14 +1,14 @@
 === Genesis Taxonomy Images ===
-Version:           1.0.0
+Version:           1.1.0
 Plugin page:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
 Donate link:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
 Contributors:      studiograsshopper, themiked
-Tags:              genesis, genesiswp, studiopress, taxonomy images, image
+Tags:              genesis, studiopress, taxonomy images, image, taxonomy meta
 Requires at least: 3.6
-Tested up to:      4.3
+Tested up to:      4.5.2
 License:           GPLv2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag:        1.0.0
+Stable tag:        1.1.0
 
 Create and manage taxonomy images for themes using the Genesis framework.
 
@@ -112,6 +112,8 @@ This plugin is designed for use with the Genesis theme framework version 2 or gr
 
 
 == Changelog ==
+= 1.1.0 =
+* FIXED: updated to work with genesis 2.3.0 Thanks @robincornett
 
 = 1.0.0 =
 * FIXED: On term edit screen, the image is now shown at its true aspect (no longer forced square)
