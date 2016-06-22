@@ -1,5 +1,5 @@
 === Genesis Taxonomy Images ===
-Version:           1.1.0
+Version:           1.1.1
 Plugin page:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
 Donate link:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
 Contributors:      studiograsshopper, themiked
@@ -17,7 +17,7 @@ Create and manage taxonomy images for themes using the Genesis framework.
 
 Once activated, this plugin enables you to upload and display an image for your taxonomy terms. Think of it as featured images for terms. It works with categories, tags, and custom taxonomies.
 
-The plugin uses the Genesis term meta functionality to manage and display the term image.
+The plugin uses the term meta functionality built into WordPress to store the taxonomy image ID.
 
 Note: this plugin is designed for use with the Genesis theme framework version 2 or greater, and will not work without it.
 
@@ -112,6 +112,9 @@ This plugin is designed for use with the Genesis theme framework version 2 or gr
 
 
 == Changelog ==
+= 1.1.1 =
+* FIXED: another update to work with genesis 2.3.0
+
 = 1.1.0 =
 * FIXED: updated to work with genesis 2.3.0 Thanks @robincornett
 

@@ -138,7 +138,7 @@ function gtaxi_add_edit_term_fields( $term, $taxonomy ) {
 	$term_image_width = $default_image_width . 'px';
 	$term_image_height = $default_image_height . 'px';
 
-	$term_image_id 	= isset ( $term->meta['term_thumbnail_id'] ) ? absint( $term->meta['term_thumbnail_id'] ) : false;
+	$term_image_id = rgc_get_term_meta( $term, 'term_thumbnail_id' );
 
 	if ($term_image_id) {
 		//$term_image_url = wp_get_attachment_url( $term_image_id );
