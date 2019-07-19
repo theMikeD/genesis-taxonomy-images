@@ -1,17 +1,17 @@
 === Genesis Taxonomy Images ===
-Version:           1.1.2
-Plugin page:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
-Donate link:       http://www.studiograsshopper.ch/genesis-taxonomy-images/
-Contributors:      studiograsshopper, themiked
-Tags:              genesis, studiopress, taxonomy images, image, taxonomy meta
-Requires at least: 3.6
-Tested up to:      4.5.2
-License:           GPLv2 or later
-License URI:       http://www.gnu.org/licenses/gpl-2.0.html
-Stable tag:        1.1.2
+Contributors: theMikeD
+Tags: taxonomy, image, term, featured, genesis, meta
+Plugin page: https://www.codenamemiked.com/plugins/genesis-taxonomy-images/
+Requires at least: 4.4.0
+Tested up to: 5.3.2
+Requires PHP: 7.0
+Stable tag: 2.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create and manage taxonomy images for themes using the Genesis framework.
 
+Based on "Genesis Taxonomy Images" plugin Copyright 2013 Ade Walker/studiograsshopper (info@studiograsshopper.ch)
 
 == Description ==
 
@@ -20,8 +20,6 @@ Once activated, this plugin enables you to upload and display an image for your 
 The plugin uses the term meta functionality built into WordPress to store the taxonomy image ID.
 
 Note: this plugin is designed for use with the Genesis theme framework version 2 or greater, and will not work without it.
-
-
 
 == Installation ==
 
@@ -40,52 +38,40 @@ Note for WordPress Multisite users:
 * Install the plugin in your */plugins/* directory (do not install in the */mu-plugins/* directory).
 * In order for this plugin to be visible to Site Admins, the plugin has to be activated for each blog by the Network Admin.
 
-**Upgrading from a previous version**
--------------------------------------
+== Upgrading from a previous version ==
 
 Use the upgrade link in the Dashboard (Dashboard > Updates) to upgrade this plugin.
-
-
 
 == Frequently Asked Questions ==
 
 = Where can I get Support? =
 
-Further information about setting up and using the plugin can be found in the plugin's [User Guide](http://www.studiograsshopper.ch/genesis-taxonomy-images/user-guide/).
+Guidance on using the plugin can be found in the plugin's [User Guide](https://www.codenamemiked.com/plugins/genesis-taxonomy-images/genesis-taxonomy-images-user-guide/).
 
-If, having read the information linked to above, you cannot solve your issue, or if you find a bug, you can post a message on the plugin's [Support Forum](http://wordpress.org/support/plugin/genesis-taxonomy-images).
+If you're still stuck or you think you fod a bug, you can post a message on the plugin's [Support Forum](http://wordpress.org/support/plugin/genesis-taxonomy-images).
 
 Support is provided in my free time but every effort will be made to respond to support queries as quickly as possible.
 
-
-= Can I Donate? =
-
-Yes, of course you can! You can find a link [here](http://www.studiograsshopper.ch/genesis-taxonomy-images/). Thanks!
-
+Source code can be found in [github](https://github.com/theMikeD/genesis-taxonomy-images).
 
 = Where is the Settings page? =
 
 There is no need for a Settings page. Images are uploaded/added via the Dashboard Edit screen for the taxonomy term in question.
 
-
 = How do I display these images in my theme? =
 
-You need to add some code to your Genesis Child Theme's `functions.php` file. Code examples can be found in the plugin's [User Guide](http://www.studiograsshopper.ch/genesis-taxonomy-images/user-guide/).
-
+You need to add some code to your Genesis Child Theme's `functions.php` file. Code examples can be found in the plugin's [User Guide](https://www.codenamemiked.com/plugins/genesis-taxonomy-images/genesis-taxonomy-images-user-guide/).
 
 = Does this plugin support custom taxonomies? =
 Yep.
 
-
 = Can you be more specific? =
 This plugin supports any taxonomy that has 'show_ui' set to true in its declaration.
 
+= Can I disable it for a specific taxonomy?
+Yes, but it requires coding. There is a filter to manipulate the supported taxonomies. Look for the `gtaxi_get_taxonomies` filter for more.
 
-= Can I disable it for a specific taxonomy? =
-Yes, but it requires coding. There is a filter to manipulate the supported taxonomies. Look at the `gtaxi_get_taxonomies` filter in `gtaxi_get_taxonomies()`
-
-
-= License and Disclaimer =
+== License and Disclaimer ==
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License 2 as published by
 the Free Software Foundation.
@@ -96,22 +82,27 @@ The license for this software can be found here: [http://www.gnu.org/licenses/gp
 
 Thanks!
 
-
-
 == Other Notes ==
 
 This plugin is designed for use with the Genesis theme framework version 2 or greater, and will not work without it.
 
+Having said that, the actual image ID is saved using standard WordPress term taxonomy tools, so even if you eventually disable this plugin, your images will still be linked to your terms. See the [User Guide](https://www.codenamemiked.com/plugins/genesis-taxonomy-images/genesis-taxonomy-images-user-guide/) for more on this.
 
 
 == Screenshots ==
 
-1. Taxonomy admin screen, in this case for tags. A new column (highlighted) is added to show the assigned term image.
-2. Term edit screen, in this case for tags. A new section (highlighted) is added to allow an image to be managed for the term.
-
+1. Taxonomy admin screen. A new column (highlighted) is added to show the assigned term image. At the start, the default image is shown.
+2. Term edit screen, A new section (highlighted) is added to allow an image to be managed for the term.
+3. Term edit screen, A new section (highlighted) as it appears after an image has been assigned.
+4. Taxonomy admin screen. A new column (highlighted) as it appears after an image has been assigned.
 
 
 == Changelog ==
+
+= 2.0.0 =
+* Rewrite/refactor into OOP
+* unit tests
+* updated manual
 
 = 1.1.2 =
 * Force version update
