@@ -183,6 +183,8 @@ class Genesis_Taxonomy_Images {
 	 */
 	private function get_term_thumbnail_id( $term ) {
 		$value = get_term_meta( $term->term_id, $this->get_meta_key(), true );
+		// This is how genesis pre-2.3.0 did things. This can be removed in the future.
+        // @see https://www.studiopress.com/important-announcement-for-genesis-plugin-developers/
 		if ( ! $value && isset( $term->meta[ $this->get_meta_key() ] ) ) {
 			$value = $term->meta[ $this->get_meta_key() ];
 		}
