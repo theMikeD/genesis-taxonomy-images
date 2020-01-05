@@ -21,10 +21,7 @@
 
 # ignore all composer installed packages
 **/vendor/
-**/bin/
-
 package-lock.json
-
 
 # Unit Test
 **/tests/codesniffer.ruleset.xml
