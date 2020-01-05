@@ -78,8 +78,6 @@ cnmd_init_tig();
  *
  * Based heavily on Genesis genesis_get_image().
  *
- * @deprecated as of version 2.
- *
  * @since  0.8.0
  *
  * @see Genesis lib/functions/image.php genesis_get_image()
@@ -107,6 +105,6 @@ cnmd_init_tig();
  * @return mixed HTML or src of this Term's image, or placeholder, or false
  */
 function gtaxi_get_taxonomy_image( $opts ) {
-	$gtaxi = new \CNMD\TaxonomyImagesForGenesis\Genesis_Taxonomy_Images();
+	$gtaxi = new \cnmd\Genesis_Taxonomy_Images();
 	return $gtaxi->get_term_image( $opts );
 }
