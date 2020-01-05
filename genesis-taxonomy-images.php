@@ -6,7 +6,7 @@ Description:       Create and manage Taxonomy Images for the Genesis theme frame
 Version:           2.0.0
 Requires at least: 4.4.0
 Requires PHP:      7.0
-Author:            theMikeD
+Author:            theMikeD, studiograsshopper
 Author URI:        http://www.codenamemiked.com
 License:           GNU General Public License v2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html

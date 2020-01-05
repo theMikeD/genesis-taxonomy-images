@@ -1,5 +1,5 @@
 === Genesis Taxonomy Images ===
-Contributors: theMikeD
+Contributors: theMikeD, studiograsshopper
 Tags: taxonomy, image, term, featured, genesis, meta
 Plugin page: https://www.codenamemiked.com/plugins/genesis-taxonomy-images/
 Requires at least: 4.4.0
