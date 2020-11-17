@@ -1,11 +1,11 @@
 === Genesis Taxonomy Images ===
-Contributors: theMikeD, studiograsshopper
+Contributors: theMikeD
 Tags: taxonomy, image, term, featured, genesis, meta
 Plugin page: https://www.codenamemiked.com/plugins/genesis-taxonomy-images/
 Requires at least: 4.4.0
-Tested up to: 5.3.2
+Tested up to: 5.5.3
 Requires PHP: 7.0
-Stable tag: 2.0.1
+Stable tag: 2.0.3
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,7 @@ This plugin is designed for use with the Genesis theme framework version 2 or gr
 
 Having said that, the actual image ID is saved using standard WordPress term taxonomy tools, so even if you eventually disable this plugin, your images will still be linked to your terms. See the [User Guide](https://www.codenamemiked.com/plugins/genesis-taxonomy-images/genesis-taxonomy-images-user-guide/) for more on this.
 
+THis plugin is based upon the work of
 
 == Screenshots ==
 
