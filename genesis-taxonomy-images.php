@@ -3,10 +3,10 @@
 Plugin Name:       Genesis Taxonomy Images
 Plugin URI:        https://wordpress.org/plugins/genesis-taxonomy-images/
 Description:       Create and manage Taxonomy Images for the Genesis theme framework
-Version:           2.0.1
+Version:           2.0.3
 Requires at least: 4.4.0
 Requires PHP:      7.0
-Author:            theMikeD, studiograsshopper
+Author:            theMikeD
 Author URI:        http://www.codenamemiked.com
 License:           GNU General Public License v2 or later
 License URI:       http://www.gnu.org/licenses/gpl-2.0.html
@@ -107,4 +107,23 @@ cnmd_init_tig();
 function gtaxi_get_taxonomy_image( $opts ) {
 	$gtaxi = new \cnmd\Genesis_Taxonomy_Images();
 	return $gtaxi->get_term_image( $opts );
+}
+
+
+/**
+ * Get the term meta.
+ *
+ * @deprecated 2.0.0
+ *
+ * @src: @robincornett
+ *
+ * @param $term object  The term
+ * @param $key string   not used
+ * @param string $value not used
+ *
+ * @return int|null
+ */
+function rgc_get_term_meta( $term, $key, $value = '' ) {
+	_deprecated_function( __FUNCTION__, '2.0.0', 'gtaxi_get_taxonomy_image( array( \'term\' => $term, \'format\' => \'id\' ) );');
+	return gtaxi_get_taxonomy_image( array( 'term' => $term, 'format' => 'id' ) );
 }

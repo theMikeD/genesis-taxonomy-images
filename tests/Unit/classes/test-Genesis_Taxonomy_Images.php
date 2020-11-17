@@ -10,9 +10,15 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 	public $image_id;
 	public $user_id;
 
+	public $this_year;
+	public $this_month;
+	
 
 	public function setUp() {
 		parent::setUp();
+		$this->this_year  = date('Y');
+		$this->this_month = date('n');
+
 
 		$this->user_id = $this->factory->user->create( array( 'role' => 'administrator' ) );
 		$user          = wp_set_current_user( $this->user_id );
@@ -42,7 +48,7 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 		$this->image_id = $this->_make_attachment( $upload );
 
 		$retrieved = wp_get_attachment_url( $this->image_id );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg', $retrieved );
 
 		add_term_meta( $this->term_with_image, 'term_thumbnail_id', $this->image_id );
 	}
@@ -90,11 +96,11 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 			'format' => 'src',
 		);
 		$retrieved = $this->instance->get_term_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg', $retrieved );
 
 		$opts['format'] = 'url';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg', $retrieved );
 
 		$opts['format'] = 'id';
 		$retrieved      = $this->instance->get_term_image( $opts );
@@ -102,7 +108,7 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 
 		$opts['format'] = 'html';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/2020/01/test-image.jpg" class="attachment-full size-full" alt="" srcset="http://example.org/wp-content/uploads/2020/01/test-image.jpg 1000w, http://example.org/wp-content/uploads/2020/01/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/2020/01/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/2020/01/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
+		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
 		$this->assertEquals( $expected, $retrieved );
 	}
 
@@ -116,11 +122,11 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 			'format' => 'src',
 		);
 		$retrieved = $this->instance->get_term_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg', $retrieved );
 
 		$opts['format'] = 'url';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg', $retrieved );
 
 		$opts['format'] = 'id';
 		$retrieved      = $this->instance->get_term_image( $opts );
@@ -128,7 +134,7 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 
 		$opts['format'] = 'html';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/2020/01/test-image.jpg" class="attachment-full size-full" alt="" srcset="http://example.org/wp-content/uploads/2020/01/test-image.jpg 1000w, http://example.org/wp-content/uploads/2020/01/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/2020/01/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/2020/01/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
+		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
 		$this->assertEquals( $expected, $retrieved );
 	}
 
@@ -168,11 +174,11 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 			'format' => 'src',
 		);
 		$retrieved = $this->instance->get_term_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg', $retrieved );
 
 		$opts['format'] = 'url';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg', $retrieved );
 
 		$opts['format'] = 'id';
 		$retrieved      = $this->instance->get_term_image( $opts );
@@ -180,7 +186,7 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 
 		$opts['format'] = 'html';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/2020/01/test-image.jpg" class="attachment-full size-full" alt="" srcset="http://example.org/wp-content/uploads/2020/01/test-image.jpg 1000w, http://example.org/wp-content/uploads/2020/01/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/2020/01/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/2020/01/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
+		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
 		$this->assertEquals( $expected, $retrieved );
 
 		// Send an invalid term ID

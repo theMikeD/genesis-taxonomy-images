@@ -39,7 +39,7 @@ class gtaxi_get_taxonomy_image_Test extends \WP_UnitTestCase {
 		$this->image_id = $this->_make_attachment( $upload );
 
 		$retrieved = wp_get_attachment_url( $this->image_id );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . date('Y') . '/' . date('n') . '/test-image.jpg', $retrieved );
 
 		add_term_meta( $this->term_with_image, 'term_thumbnail_id', $this->image_id );
 	}
@@ -73,7 +73,7 @@ class gtaxi_get_taxonomy_image_Test extends \WP_UnitTestCase {
 				'format' => 'src',
 		);
 		$retrieved = gtaxi_get_taxonomy_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . date('Y') . '/' . date('n') . '/test-image.jpg', $retrieved );
 
 
 		// Get the term image with a valid term ID
@@ -82,7 +82,7 @@ class gtaxi_get_taxonomy_image_Test extends \WP_UnitTestCase {
 				'format' => 'src',
 		);
 		$retrieved = gtaxi_get_taxonomy_image( $opts );
-		$this->assertEquals( 'http://example.org/wp-content/uploads/2020/01/test-image.jpg', $retrieved );
+		$this->assertEquals( 'http://example.org/wp-content/uploads/' . date('Y') . '/' . date('n') . '/test-image.jpg', $retrieved );
 
 	}
 
