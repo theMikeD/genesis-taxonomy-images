@@ -3,7 +3,7 @@
 Plugin Name:       Genesis Taxonomy Images
 Plugin URI:        https://wordpress.org/plugins/genesis-taxonomy-images/
 Description:       Create and manage Taxonomy Images for the Genesis theme framework
-Version:           2.0.3
+Version:           2.0.4
 Requires at least: 4.4.0
 Requires PHP:      7.0
 Author:            theMikeD
