@@ -2,8 +2,8 @@
 Contributors: theMikeD
 Tags: taxonomy, image, term, featured, genesis, meta
 Plugin page: https://www.codenamemiked.com/plugins/genesis-taxonomy-images/
-Requires at least: 4.4.0
-Tested up to: 5.5.3
+Requires at least: 5.0.0
+Tested up to: 6.4.0
 Requires PHP: 7.0
 Stable tag: 2.0.3
 License: GNU General Public License v2 or later
@@ -99,6 +99,10 @@ THis plugin is based upon the work of
 
 
 == Changelog ==
+
+= 2.0.4
+* update tests
+* WP 6.4 tests
 
 = 2.0.0 =
 * Rewrite/refactor into OOP
