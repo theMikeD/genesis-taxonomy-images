@@ -107,7 +107,7 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 
 		$opts['format'] = 'html';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
+		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="auto, (max-width: 1000px) 100vw, 1000px" />';
 		$this->assertEquals( $expected, $retrieved );
 	}
 
@@ -133,7 +133,7 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 
 		$opts['format'] = 'html';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
+		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="auto, (max-width: 1000px) 100vw, 1000px" />';
 		$this->assertEquals( $expected, $retrieved );
 	}
 
@@ -185,7 +185,7 @@ class Genesis_Taxonomy_Images_Test extends \WP_UnitTestCase {
 
 		$opts['format'] = 'html';
 		$retrieved      = $this->instance->get_term_image( $opts );
-		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="(max-width: 1000px) 100vw, 1000px" />';
+		$expected       = '<img width="1000" height="1000" src="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg" class="attachment-full size-full" alt="" decoding="async" loading="lazy" srcset="http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image.jpg 1000w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-300x300.jpg 300w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-150x150.jpg 150w, http://example.org/wp-content/uploads/' . $this->this_year . '/' . $this->this_month . '/test-image-768x768.jpg 768w" sizes="auto, (max-width: 1000px) 100vw, 1000px" />';
 		$this->assertEquals( $expected, $retrieved );
 
 		// Send an invalid term ID
